@@ -1,32 +1,16 @@
-<p id="notice"><%= notice %></p>
-
-<h1>商品の一覧ページ</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>名称</th>
-      <th>価格</th>
-      <th>在庫数</th>
-      <th colspan="4"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="container">
+  <h1>商品の一覧ページ</h1>
+  <div class="row">
     <% @items.each do |item| %>
-      <tr>
-        <td><%= item.name %></td>
-        <td><%= item.price %></td>
-        <td><%= item.stock %></td>
-        <td><%= link_to '購入', purchase_item_path(item), data: { confirm: '本当に購入しますか？' } %></td>
-        <td><%= link_to '商品ページへ', item %></td>
-        <td><%= link_to '編集', edit_item_path(item) %></td>
-        <td><%= link_to '削除', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+      <div class="col-md-4">
+        <%= image_tag 'https://d3ftecjsng6jy5.cloudfront.net/images/topic/1275/a46968f8fceeb31c343ea5a96a3789245f6304e5_p.jpeg', width: '250px' %>
+        <h3><%= item.name %></h3>
+        </p><%= item.price %>円 - 在庫数:<%= item.stock %></p>
+        <p>
+          <%= link_to '購入', purchase_item_path(item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning' %>
+          <%= link_to '商品ページへ', item, class: 'btn btn-info' %>
+        </p>
+      </div>
     <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to '新しい商品を追加', new_item_path %>
+  <div>
+<div>
