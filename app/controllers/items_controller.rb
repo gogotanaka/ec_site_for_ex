@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :set_item, only: [:show, :edit, :update, :destroy, :purchase]
 
   # GET /items
   # GET /items.json
@@ -59,6 +59,11 @@ class ItemsController < ApplicationController
       format.html { redirect_to items_url, notice: 'Item was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def purchase
+    @item.stock -= 1
+    @item.save
   end
 
   private

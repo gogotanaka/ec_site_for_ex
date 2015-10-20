@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  resources :items
-  resources :items
+  resources :items do
+    member do
+      get 'purchase'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  root 'items#index'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
