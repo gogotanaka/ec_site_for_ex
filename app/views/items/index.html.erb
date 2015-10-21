@@ -15,7 +15,9 @@
       <h3><%= item.name %></h3>
       </p><%= item.price %>円 - 在庫数:<%= item.stock %></p>
       <p>
-        <%= link_to '購入', purchase_item_path(item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning' %>
+        <% if current_user %>
+          <%= link_to '購入', purchase_item_path(item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning' %>
+        <% end %>
         <%= link_to '商品ページへ', item, class: 'btn btn-info' %>
       </p>
     </div>

@@ -62,8 +62,10 @@ class ItemsController < ApplicationController
   end
 
   def purchase
+    # @item.decrement(:stock)
     @item.stock -= 1
     @item.save
+    current_user.items << @item
   end
 
   private
