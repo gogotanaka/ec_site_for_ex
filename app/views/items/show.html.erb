@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
-  <%= @item.name %>
-</p>
-
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
-
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<div class="row text-center">
+  <div class="col-md-12">
+    <%= image_tag 'pan.jpeg', width: '250px' %>
+    <h3><%= @item.name %></h3>
+    <p><%= @item.price %>円 - 在庫数:<%= @item.stock %></p>
+  </div>
+  <% if current_user %>
+    <%= link_to '購入', purchase_item_path(@item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning' %>
+  <% else %>
+    ログインをして購入してください。
+  <% end %>
+</div>
