@@ -28,6 +28,10 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'carrierwave'
+gem 'haml'
+# ls app/views/**/*.erb | sed 'p;s/.erb$/.haml/' | xargs -n2 html2haml
+# rm app/views/**/*.erb
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

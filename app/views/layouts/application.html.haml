@@ -1,0 +1,20 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+    %title EcSiteForEx
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  %body
+    .container
+      .row{:style => "margin-bottom: 20px"}
+        .col-md-6.text-left
+          %h3= link_to 'パン屋さん.com', root_path
+        .col-md-6.text-right
+          - if current_user
+            = link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete
+          - else
+            = link_to '新規登録', new_user_registration_path, class: 'btn btn-danger'
+            = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
+      = yield

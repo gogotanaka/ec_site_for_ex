@@ -1,0 +1,15 @@
+.row.text-center
+  .col-md-12
+    = image_tag '/pan.jpeg', width: '250px'
+    %h3= @item.name
+    %p
+      = @item.price
+      円 - 在庫数:#{@item.stock}
+  - if current_user
+    = link_to '購入', purchase_item_path(@item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning'
+  - else
+    ログインをして購入してください。
+- if @item.users.count != 0
+  こんな人がこの商品買ってます。
+  - @item.users.each do |user|
+    %p= user.email
