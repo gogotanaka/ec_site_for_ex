@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
+  get 'users/history'
+
   devise_for :users
   resources :items do
     member do
       get 'purchase'
-    end
-    collection do
-      get 'history'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

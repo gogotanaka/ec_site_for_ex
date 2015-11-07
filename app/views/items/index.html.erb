@@ -13,3 +13,20 @@
     </div>
   <% end %>
 <div>
+
+<% if current_user %>
+  <%= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete %>
+<% else %>
+  <%= link_to '新規登録', new_user_registration_path, class: 'btn btn-danger' %>
+  <%= link_to 'ログイン', new_user_session_path, class: 'btn btn-primary' %>
+<% end %>
+
+現在のユーザーの数は<%= User.count %>人
+<% User.all.each do |user| %>
+  <p><%= user.email %></p>
+<% end %>
+
+<% if current_user %>
+  ようこそ<%= current_user.email %>さん
+  あなたのidは<%= current_user.id %>です。
+<% end %>

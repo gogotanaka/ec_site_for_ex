@@ -10,3 +10,10 @@
     ログインをして購入してください。
   <% end %>
 </div>
+
+<% if @item.users.count != 0 %>
+  こんな人がこの商品買ってます。
+  <% @item.users.each do |user| %>
+    <p><%= user.email %></p>
+  <% end %>
+<% end %>
