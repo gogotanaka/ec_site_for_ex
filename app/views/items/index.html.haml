@@ -10,15 +10,3 @@
         - if current_user
           = link_to '購入', purchase_item_path(item), data: { confirm: '本当に購入しますか？' }, class: 'btn btn-warning'
         = link_to '商品ページへ', item, class: 'btn btn-info'
-  %div
-    - if current_user
-      = link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete
-    - else
-      = link_to '新規登録', new_user_registration_path, class: 'btn btn-danger'
-      = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
-    現在のユーザーの数は#{User.count}人
-    - User.all.each do |user|
-      %p= user.email
-    - if current_user
-      ようこそ#{current_user.email}さん
-      あなたのidは#{current_user.id}です。

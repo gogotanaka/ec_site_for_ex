@@ -13,7 +13,11 @@
           %h3= link_to 'パン屋さん.com', root_path
         .col-md-6.text-right
           - if current_user
-            = link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete
+            %p
+              ようこそ#{current_user.email}さん
+              あなたのidは#{current_user.id}です。
+            %p= link_to 'ログアウト', destroy_user_session_path, class: 'btn btn-danger', method: :delete
+            %p= link_to "購入履歴へ", users_history_path
           - else
             = link_to '新規登録', new_user_registration_path, class: 'btn btn-danger'
             = link_to 'ログイン', new_user_session_path, class: 'btn btn-primary'
