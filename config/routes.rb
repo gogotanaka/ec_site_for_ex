@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  namespace :api, {  format: 'json' } do
+    namespace :v1 do
+      resources :sessions, only: [:create]
+      resources :items, only: [:index, :show] do
+        member do
+          post :purchase
+        end
+      end
+    end
+  end
+  
   get 'users/history'
   get "users/count" => "users#count"
 
